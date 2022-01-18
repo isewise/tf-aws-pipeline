@@ -8,8 +8,9 @@ resource "aws_iam_role" "codepipeline_role" {
         Effect = "Allow"
         Sid    = ""
         Principal = {
-          "Service":
+          "Service": [
           "codepipeline.amazonaws.com"
+          ]
         }
       }
     ]
