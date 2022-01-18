@@ -87,17 +87,6 @@ resource "aws_codepipeline" "tf-pipeline" {
       }
     }
   }
-
-  # stage {
-  #   name = "Approval"
-  #   action {
-  #     name = "Approval"
-  #     category = "Approval"
-  #     owner = "AWS"
-  #     provider = "CodeBuild"
-  #   }
-  # }
-
   stage {
     name = "Deploy"
     action {
