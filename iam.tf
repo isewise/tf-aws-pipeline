@@ -8,15 +8,14 @@ resource "aws_iam_role" "codepipeline_role" {
         Effect = "Allow"
         Sid    = ""
         Principal = {
-          "Service": [
-          "codebuild.amazonaws.com",
+          "Service":
           "codepipeline.amazonaws.com"
-          ]
         }
       }
     ]
   })
 }
+
 
 data "aws_iam_policy_document" "tf-cicd-pipeline-policies" {
   statement {
@@ -65,7 +64,6 @@ resource "aws_iam_role" "tf-codebuild-role" {
   ]
 }
 EOF
-
 }
 
 data "aws_iam_policy_document" "tf-cicd-build-policies" {
