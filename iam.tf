@@ -33,6 +33,7 @@ data "aws_iam_policy_document" "tf-cicd-pipeline-policies" {
   }
 }
 
+
 resource "aws_iam_policy" "tf-cicd-pipeline-policy" {
   name        = "tf-cicd-pipeline-policy"
   path        = "/"
@@ -40,10 +41,12 @@ resource "aws_iam_policy" "tf-cicd-pipeline-policy" {
   policy      = data.aws_iam_policy_document.tf-cicd-pipeline-policies.json
 }
 
+
 resource "aws_iam_role_policy_attachment" "tf-cicd-pipeline-attachment" {
   policy_arn = aws_iam_policy.tf-cicd-pipeline-policy.arn
   role       = aws_iam_role.codepipeline_role.id
 }
+
 
 resource "aws_iam_role" "tf-codebuild-role" {
   name               = "tf-codebuild-role"
@@ -76,6 +79,7 @@ data "aws_iam_policy_document" "tf-cicd-build-policies" {
   }
 }
 
+
 resource "aws_iam_policy" "tf-cicd-build-policy" {
   name        = "tf-cicd-build-policy"
   path        = "/"
@@ -83,12 +87,15 @@ resource "aws_iam_policy" "tf-cicd-build-policy" {
   policy      = data.aws_iam_policy_document.tf-cicd-build-policies.json
 }
 
+
 resource "aws_iam_role_policy_attachment" "tf-cicd-codebuild-attachment1" {
   policy_arn = aws_iam_policy.tf-cicd-build-policy.arn
   role       = aws_iam_role.tf-codebuild-role.id
 }
 
+
 resource "aws_iam_role_policy_attachment" "tf-cicd-codebuild-attachment2" {
   policy_arn = "arn:aws:iam::aws:policy/PowerUserAccess"
   role       = aws_iam_role.tf-codebuild-role.id
 }
+
